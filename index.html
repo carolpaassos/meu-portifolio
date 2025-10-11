@@ -1,279 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfólio - Carolina Passos</title>
-  <style>
-    :root {
-      --bg: #f7f7f7;
-      --text: #2b2b2b;
-      --muted: #666;
-      --primary: #0f766e;
-      --surface: #fff;
-      --radius: 16px;
-      --shadow: 0 10px 28px rgba(0, 0, 0, .07);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px
-    }
-
-    header {
-      background: linear-gradient(135deg, #0ea5a4, #0f766e);
-      color: #fff
-    }
-
-    .header-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px
-    }
-
-    .brand img {
-      width: 72px;
-      height: 72px;
-      border-radius: 14px;
-      box-shadow: var(--shadow)
-    }
-
-    .brand h1 {
-      font-size: clamp(22px, 3.2vw, 34px)
-    }
-
-    .subtitle {
-      opacity: .9;
-      font-size: 14px
-    }
-
-    nav {
-      background: #0f766e
-    }
-
-    .menu {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      justify-content: center;
-      padding: 12px 0
-    }
-
-    .menu a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, .25)
-    }
-
-    .menu a:hover {
-      background: #0ea5a4
-    }
-
-    .apresentacao {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 22px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease;
-    }
-
-    .apresentacao.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .apresentacao img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #fff;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, .08)
-    }
-
-    .apresentacao h2 {
-      color: var(--primary);
-      margin-bottom: 6px
-    }
-
-    section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #sobre,
-    .grid>.card {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      margin-top: 22px;
-    }
-
-    #sobre h2 {
-      color: var(--primary);
-      margin-bottom: 8px
-    }
-
-    #projetos {
-      margin: 22px 0
-    }
-
-    .grid {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
-    }
-
-    .grid>.card {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all .7s ease;
-    }
-
-    .grid>.card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .grid .card h3 {
-      margin: 6px 0 8px
-    }
-
-    .grid .card p {
-      color: var(--muted)
-    }
-
-    #contato h2 {
-      color: var(--primary);
-      margin-bottom: 10px
-    }
-
-    footer {
-      background: #0e2220;
-      color: #fff;
-      margin-top: 26px
-    }
-
-    footer .footer-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap
-    }
-
-    footer a {
-      color: #c7fffb;
-      text-decoration: none
-    }
-
-    footer a:hover {
-      text-decoration: underline
-    }
-
-    footer p {
-      opacity: .9
-    }
-
-    #btnTopo {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 12px 16px;
-      cursor: pointer;
-      font-size: 18px;
-      box-shadow: var(--shadow);
-      transition: 0.3s ease;
-    }
-
-    #btnTopo:hover {
-      background: #0ea5a4;
-    }
-
-    #btnWhatsapp {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      background: #25d366;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 14px 16px;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: 0.3s ease;
-    }
-
-    #btnWhatsapp:hover {
-      background: #20ba5a;
-    }
-
-    .menu a.ativo {
-      background: #0ea5a4;
-      border-color: transparent;
-    }
-
-    @media (max-width:740px) {
-      .header-wrap {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center
-      }
-
-      .apresentacao {
-        flex-direction: column;
-        text-align: center
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <header>
     <div class="container header-wrap">
@@ -288,7 +20,7 @@
   </header>
 
   <nav>
-    <ul class="menu container">
+    <ul class="menu container" id="menu">
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#projetos">Projetos</a></li>
@@ -300,62 +32,89 @@
     <section class="apresentacao">
       <img src="https://i.ibb.co/xK1hcDLF/Whats-App-Image-2025-09-10-at-22-42-59.jpg" alt="foto-carol">
       <div>
-        <h2>Olá!</h2>
-        <p>Carolina Passos - Estudante de ADS | Transformando ideias em tecnologia.</p>
+        <div class="section-kicker">✨ Bem-vindo(a)!</div>
+        <h2 class="section-title">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+            <path d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/>
+          </svg>
+          Olá!
+        </h2>
+        <p>Carolina Passos — Estudante de ADS | Transformando ideias em tecnologia.</p>
       </div>
     </section>
 
+    <div class="divider" aria-hidden="true"></div>
+
     <section id="sobre">
-      <h2>Sobre mim</h2>
-      <p>Tenho 24 anos e sou estudante do 4º período de ADS. Tenho conhecimentos em sistemas, banco de dados e
-        experiência em vendas. Apaixonada por tecnologia e soluções eficientes.</p>
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z"/>
+        </svg>
+        Sobre mim
+      </h2>
+      <p>Tenho 24 anos e sou estudante do 4º período de ADS. Tenho conhecimentos em sistemas, banco de dados e experiência em vendas. Apaixonada por tecnologia e soluções eficientes.</p>
     </section>
-    <br>
+
     <section id="habilidades">
-      <h2>Habilidades</h2>
+      <br>
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+        </svg>
+        Habilidades
+      </h2>
       <div class="grid">
         <div class="card">
           <h3>Desenvolvimento em Java</h3>
-          <p>Domínio de Java com foco em Programação Orientada a Objetos (POO), uso de classes, construtores,
-            encapsulamento, herança e polimorfismo.</p>
+          <p>POO, classes, construtores, encapsulamento, herança e polimorfismo.</p>
         </div>
         <div class="card">
           <h3>Interfaces Gráficas</h3>
-          <p>Experiência com Swing (JFrame, JPanel, JTable, JComboBox, JButton, JOptionPane), desenvolvendo
-            interfaces intuitivas e funcionais.</p>
+          <p>Swing (JFrame, JPanel, JTable, JComboBox, JButton, JOptionPane) para interfaces intuitivas.</p>
         </div>
         <div class="card">
           <h3>Projetos Práticos</h3>
-          <p>Criação de sistemas como o projeto <strong>"Estacionamento"</strong>, aplicando conceitos de MVC e CRUD.
-          </p>
+          <p>Projeto <strong>"Estacionamento"</strong>, aplicando MVC e CRUD.</p>
         </div>
         <div class="card">
           <h3>Design e Ferramentas</h3>
-          <p>Domínio do Canva Pro para criação de convites e materiais visuais, e boa comunicação em
-            apresentações e propostas comerciais.</p>
+          <p>Canva Pro para convites e materiais visuais. Apresentações e propostas comerciais.</p>
         </div>
       </div>
     </section>
 
     <section id="projetos">
-      <h2>Projetos</h2>
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M10 4l2 2h8a2 2 0 012 2v2H6V6a2 2 0 012-2h2zM4 10h20v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6z"/>
+        </svg>
+        Projetos
+      </h2>
       <div class="grid">
         <div class="card">
-          <h3><a href="https://github.com/carolpaassos/projeto-estacionamento/tree/main" target="_blank">Gerenciamento de Estacionamento</a></h3>
+          <img src="img/projetos.jpg" alt="Imagem do Projeto" style="width:100%; border-radius:12px; margin-bottom:10px;" onerror="this.style.display='none'">
+          <h3>
+            <a href="https://github.com/carolpaassos/projeto-estacionamento/tree/main" target="_blank">Gerenciamento de Estacionamento</a>
+          </h3>
           <p>Projeto acadêmico em Java e SQL, aplicando lógica de programação e desenvolvimento de sistemas.</p>
         </div>
       </div>
     </section>
 
     <section id="contato">
-      <h2>Contato</h2>
+      <h2 class="section-title">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 00-2 2v1l10 6 10-6V6a2 2 0 00-2-2zm0 6l-8 4.8L4 10v8a2 2 0 002 2h12a2 2 0 002-2v-8z"/>
+        </svg>
+        Contato
+      </h2>
       <div class="grid">
         <div class="card">
           <p>📞 <a href="callto:(31)994344496">(31) 99434-4496</a></p>
           <p>✉️ <a href="mailto:carolinapassos1920@gmail.com">carolinapassos1920@gmail.com</a></p>
         </div>
         <div class="card">
-          <p>Fique à vontade para entrar em contato para dúvidas, ideias e oportunidades.</p>
+          <p>💬 Fique à vontade para entrar em contato para dúvidas, ideias e oportunidades.</p>
         </div>
       </div>
     </section>
@@ -363,10 +122,25 @@
 
   <footer>
     <div class="container footer-wrap">
-      <p>&copy; 2025 Carolina Passos. Todos os direitos reservados.</p>
-      <ul>
-        <li><a href="https://wa.me/5531994344496?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20portif%C3%B3lio">WhatsApp</a></li>
-        <li><a href="https://www.instagram.com/carol.passos1/">Instagram</a></li>
+      <p>✨ &copy; 2025 Carolina Passos. Todos os direitos reservados.</p>
+      <ul class="social">
+        <li>
+          <a href="https://wa.me/5531994344496?text=Ol%C3%A1%2C%20vim%20pelo%20seu%20portf%C3%B3lio" target="_blank" aria-label="WhatsApp">
+            <svg viewBox="0 0 32 32" fill="#25D366" aria-hidden="true">
+              <path d="M19.11 17.53c-.27-.14-1.62-.8-1.87-.9-.25-.09-.43-.14-.61.14-.18.27-.7.9-.86 1.08-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.14-1.31-.79-.7-1.32-1.57-1.47-1.84-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.48-.84-2.04-.22-.53-.45-.46-.61-.46-.16 0-.34-.02-.52-.02-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.36.98 2.67 1.12 2.85.14.18 1.93 2.94 4.68 4.01.65.28 1.16.45 1.56.58.65.2 1.24.17 1.7.1.52-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.2-.52-.34z"/>
+              <path d="M26.7 5.3C24.08 2.68 20.65 1.25 17 1.25 9.56 1.25 3.5 7.3 3.5 14.75c0 2.35.62 4.64 1.79 6.66L3 29l7.77-2.2c1.94 1.06 4.14 1.62 6.23 1.62 7.44 0 13.5-6.06 13.5-13.5 0-3.64-1.42-7.08-4.05-9.62zM17 26.17c-1.84 0-3.66-.49-5.25-1.41l-.38-.22-4.61 1.3 1.24-4.48-.25-.39a11.26 11.26 0 01-1.77-6.22C5.98 8.18 10.95 3.2 17 3.2c3.31 0 6.42 1.29 8.77 3.64A12.33 12.33 0 0129.6 14.8c0 6.06-4.93 10.97-10.97 10.97z"/>
+            </svg>
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/carol.passos1/" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="#E1306C" aria-hidden="true">
+              <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.67 0 3 1.33 3 3v10c0 1.67-1.33 3-3 3H7c-1.67 0-3-1.33-3-3V7c0-1.67 1.33-3 3-3zm11 1.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            </svg>
+            Instagram
+          </a>
+        </li>
       </ul>
     </div>
   </footer>
@@ -374,24 +148,6 @@
   <button id="btnTopo" title="Voltar ao topo">⬆</button>
   <button id="btnWhatsapp" title="Falar no WhatsApp">💬</button>
 
-  <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('section, .card, .apresentacao').forEach(el => observer.observe(el));
-
-    const btnTopo = document.getElementById('btnTopo');
-    window.addEventListener('scroll', () => {
-      btnTopo.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    btnTopo.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    document.getElementById('btnWhatsapp').addEventListener('click', () => {
-      window.open('https://wa.me/5531994344496?text=Ol%C3%A1%2C%20Carolina!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20queria%20conversar%20com%20voc%C3%AA.', '_blank');
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
